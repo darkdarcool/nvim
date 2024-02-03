@@ -1,64 +1,39 @@
 require("lazy-setup")
-local lsp = require "lspconfig"
+require("lsp")
+require("remapping")
 
--- keybinds
 
-local bufnr = vim.api.nvim_get_current_buf()
-vim.keymap.set(
-  "n", 
-  "<leader>a", 
-  function()
-    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
-    -- or vim.lsp.buf.codeAction() if you don't want grouping.
-  end,
-  { silent = true, buffer = bufnr }
-)
-
--- space f to open telescope 
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>f", "<cmd>Telescope file_browser find_command=rg,--ignore,--hidden,--files<CR>", { noremap = true, silent = true })
 
 require("telescope").load_extension "file_browser"
 
 -- set color scheme to rose-pine 
 vim.cmd("colorscheme rose-pine")
 
--- lspconfig for deno 
-require("lspconfig").denols.setup {
-  cmd = { "deno", "lsp" },
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "json" },
-  init_options = {
-    enable = true,
-    lint = true,
-    unstable = true,
-  },
-  root_dir = require("lspconfig/util").root_pattern("package.json", "tsconfig.json", ".git"),
+-- set window to be transparent
+vim.cmd("highlight Normal guibg=none")
+-- set guifg to be transparent
+vim.cmd("highlight NonText guifg=none")
+-- set lualine to be transparent 
+vim.cmd("highlight lualine_c_normal guibg=none")
+
+-- lualine 
+require("lualine").setup {
+  options = {
+    theme = 'auto',
+    section_separators = { '', '' },
+  }
 }
 
--- lspconfig for zig 
-require("lspconfig").zls.setup {
-  cmd = { "zls" },
-  filetypes = { "zig" },
-  root_dir = require("lspconfig/util").root_pattern(".git"),
-}
+-- set line numbers to be shown (set number)
+vim.wo.number = true
 
-lsp.rust_analyzer.setup({
-  cmd = { "rust-analyzer" },
-  filetypes = { "rust" },
-  root_dir = require("lspconfig/util").root_pattern(".git"),
-})
+-- -- return { "sitiom/nvim-numbertoggle" }
 
+-- if we are in a .ts file, indent size to 2 (and use spaces)
+vim.cmd("autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab")
+-- if we are in a .rs file, indent size to 4 (and use spaces)
+vim.cmd("autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab")
 
-local bufnr = vim.api.nvim_get_current_buf()
-vim.keymap.set(
-  "n", 
-  "<leader>a", 
-  function()
-    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
-    -- or vim.lsp.buf.codeAction() if you don't want grouping.
-  end,
-  { silent = true, buffer = bufnr }
-)
-
--- ctrl t for TroubleToggle 
-vim.keymap.set("n", "<C-t>", "<cmd>TroubleToggle<cr>", { noremap = true, silent = true })
+-- I want to delete a file in telescope.nvim. I see that the docs say to do <A-d>/d remove Delete (multi-)selected files/folders, but I don't understand what it means, can you explain?
+-- Sure! <A-d> means Alt-d, and /d means d. So you can either press Alt-d or d to delete the file.
+-- Ok! Let's rebind it to the DELETE key!

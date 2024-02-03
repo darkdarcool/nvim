@@ -1,7 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   config = function () 
-    -- rust-analyzer
+    -- show lsp documentation in a floating window
     
   end
 }

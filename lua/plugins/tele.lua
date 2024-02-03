@@ -7,7 +7,15 @@ return {
         -- ignore node_modules, target (rust), and zig-cache, and .git
         defaults = {
           file_ignore_patterns = { "node%_modules/.*", "target/.*", "zig%-cache/.*", "%.git/.*" },
+        },
+        -- remap delete file from alt + d to delete key 
+        mappings = {
+          -- <DEL>
+          i = {
+            ["<DEL>"] = require("telescope.actions").delete_buffer,
+          },
         }
+        
       })
     end
   }
