@@ -24,7 +24,7 @@ return {
         extensions = {
           file_browser = {
             theme = "dropdown",
-            -- hijack_netrw = true,
+            hijack_netrw = true,
           }
         }
         -- remap delete file from alt + d to delete key 
