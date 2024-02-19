@@ -4,6 +4,8 @@ return {
   config = function ()
     require("rose-pine").setup({
       variant = "main",
-    })
-  end
+      styles = { italic = false } 
+  })
+  end,
+  branch = "canary"
 }

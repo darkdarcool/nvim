@@ -10,6 +10,19 @@ local M = {
 	},
 }
 
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
+
 M.config = function()
 	local cmp = require("cmp")
 	vim.opt.completeopt = { "menu", "menuone", "noselect" }
@@ -23,6 +36,14 @@ M.config = function()
 		window = {
 			-- completion = cmp.config.window.bordered(),
 			-- documentation = cmp.config.window.bordered(),
+      documentation = {
+        border = border "CmpDocBorder",
+        winhighlight = "Normal:CmpDoc"
+      },
+      completion = {
+        border = border "CmpItemBorder",
+        winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
+      },
 		},
 		mapping = cmp.mapping.preset.insert({
 			["<C-b>"] = cmp.mapping.scroll_docs(-4),

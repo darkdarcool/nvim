@@ -3,11 +3,12 @@ require("lsp")
 require("remapping")
 
 
-
 require("telescope").load_extension "file_browser"
 
 -- set color scheme to rose-pine 
-vim.cmd("colorscheme rose-pine")
+-- vim.cmd("colorscheme rose-pine")
+-- set color scheme to tokyonight night 
+-- vim.cmd("colorscheme tokyonight-night")
 
 -- set window to be transparent
 vim.cmd("highlight Normal guibg=none")
@@ -34,6 +35,13 @@ vim.cmd("autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop
 -- if we are in a .rs file, indent size to 4 (and use spaces)
 vim.cmd("autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab")
 
--- I want to delete a file in telescope.nvim. I see that the docs say to do <A-d>/d remove Delete (multi-)selected files/folders, but I don't understand what it means, can you explain?
--- Sure! <A-d> means Alt-d, and /d means d. So you can either press Alt-d or d to delete the file.
--- Ok! Let's rebind it to the DELETE key!
+-- nvim notifications rebind to our plugin 
+vim.notify = require("notify")
+
+vim.opt.signcolumn = "yes"
+-- highlight clear SignColumn
+vim.cmd("highlight clear SignColumn")
+
+vim.g.tokyonight_dark_float = false
+
+require('transparent').clear_prefix('lualine')
