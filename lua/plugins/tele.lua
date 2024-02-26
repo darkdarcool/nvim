@@ -1,4 +1,5 @@
 local trouble = require("trouble.providers.telescope")
+local actions = require("telescope.actions")
 
 return {
   'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -13,7 +14,6 @@ return {
             -- <DEL>
             i = {
               ["<DEL>"] = require("telescope.actions").delete_buffer,
-              ["<c-t>"] = trouble.open_with_trouble,
             },
             n = {
               -- ["<DEL>"] = require("telescope.actions").delete_buffer,
@@ -24,7 +24,7 @@ return {
         extensions = {
           file_browser = {
             theme = "dropdown",
-            hijack_netrw = true,
+            -- hijack_netrw = true,
           }
         }
         -- remap delete file from alt + d to delete key 

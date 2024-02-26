@@ -45,3 +45,11 @@ vim.cmd("highlight clear SignColumn")
 vim.g.tokyonight_dark_float = false
 
 require('transparent').clear_prefix('lualine')
+
+local isBun = require("lspconfig/util").root_pattern("package.json", "tsconfig.json") ~= nil
+
+require('Comment').setup()
+
+-- run :highlight LineNr guifg=#595e66
+vim.cmd("highlight LineNr guifg=#595e66")
+

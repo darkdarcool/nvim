@@ -8,6 +8,9 @@ return {
       editing_text = "Editing %s",
       workspace_text = "Working on %s",
       auto_update = true,
+      main_image = "file",
+      -- this options cooked
+      -- enable_line_number = true
     })
   end
 }
