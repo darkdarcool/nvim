@@ -1,5 +1,5 @@
 local trouble = require("trouble.providers.telescope")
-local actions = require("telescope.actions")
+-- local actions = require("telescope.actions")
 
 return {
   'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -13,7 +13,7 @@ return {
           mappings = {
             -- <DEL>
             i = {
-              ["<DEL>"] = require("telescope.actions").delete_buffer,
+            --  ["<DEL>"] = require("telescope.actions").delete_buffer,
             },
             n = {
               -- ["<DEL>"] = require("telescope.actions").delete_buffer,
