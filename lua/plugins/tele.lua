@@ -9,7 +9,7 @@ return {
       require("telescope").setup({
         -- ignore node_modules, target (rust), and zig-cache, and .git
         defaults = {
-          file_ignore_patterns = { "node%_modules/.*", "target/.*", "zig%-cache/.*", "%.git/.*" },
+          file_ignore_patterns = { "node%_modules/.*", "target/.*", "zig%-cache/.*", ".git/" },
           mappings = {
             -- <DEL>
             i = {

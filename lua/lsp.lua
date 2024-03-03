@@ -26,10 +26,11 @@ require("lspconfig").zls.setup {
   root_dir = require("lspconfig").util.root_pattern(".git"),
 }
 
+
 lsp.rust_analyzer.setup({
   cmd = { "rust-analyzer" },
   filetypes = { "rust" },
-  root_dir = require("lspconfig").util.root_pattern(".git"),
+  root_dir = require("lspconfig").util.root_pattern("Cargo.toml"),
 })
 
 lsp.swift_mesonls.setup({
@@ -37,6 +38,8 @@ lsp.swift_mesonls.setup({
   root_dir = require("lspconfig").util.root_pattern("Package.swift"),
   file_types = { "swift" },
 })
+
+lsp.zig.setup{}
 
 
 require ('nvim-treesitter.configs').setup {

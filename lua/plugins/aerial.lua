@@ -1,6 +1,9 @@
 return {
-  'stevearc/aerial.nvim',
-  opts = {},
+  -- 'stevearc/aerial.nvim',
+  'darkdarcool/aerial.nvim',
+  opts = {
+    
+  },
   -- Optional dependencies
   dependencies = {
      "nvim-treesitter/nvim-treesitter",
