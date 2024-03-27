@@ -15,5 +15,6 @@ return {
   },
   setup = function () 
     -- <leader> + shift a to open the finder 
-  end
+  end,
+  event = "LspAttach"
 }

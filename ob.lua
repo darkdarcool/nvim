@@ -24,11 +24,8 @@ return {
         name = "personal",
         path = "~/personal/vault/Personal",
       },
-      {
-        name = "school",
-        path = "~/school/vault/"
-      }
     },
     -- see below for full list of options 👇
   },
 }
+

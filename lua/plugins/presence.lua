@@ -1,5 +1,6 @@
 return {
-  "NyCodeGHG/presence.nvim",
+--  "NyCodeGHG/presence.nvim",
+  "andweeb/presence.nvim",
   event = "BufEnter",
   config = function()
     require("presence").setup({

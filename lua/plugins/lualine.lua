@@ -37,7 +37,7 @@ return {
               disabled_filetypes = { statusline = { "dashboard", "alpha" } },
           },
           sections = {
-              lualine_a = { { "mode", icon = "" } },
+              lualine_a = { { "mode", icon = "", color = { fg = colors.blue, bg = colors.none } } },
               lualine_b = { { "branch", icon = "" } },
               lualine_c = {
                   {
@@ -61,38 +61,14 @@ return {
                       cond = function()
                           return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
                       end,
-                      color = { fg = colors.grey, bg = colors.none },
+                      color = { fg = colors.green, bg = colors.none },
                   },
               },
-              lualine_x = {
-                  {
-                      require("lazy.status").updates,
-                      cond = require("lazy.status").has_updates,
-                      color = { fg = colors.green },
-                  },
-                  {
-                      function()
-                          local icon = " "
-                          local status = require("copilot.api").status.data
-                          return icon .. (status.message or "")
-                      end,
-                      cond = function()
-                          local ok, clients = pcall(vim.lsp.get_active_clients, { name = "copilot", bufnr = 0 })
-                          return ok and #clients > 0
-                      end,
-                      color = function()
-                          if not package.loaded["copilot"] then
-                              return
-                          end
-                          local status = require("copilot.api").status.data
-                          return copilot_colors[status.status] or copilot_colors[""]
-                      end,
-                  },
-                  { "diff" },
-              },
+	      lualine_x = {},
               lualine_y = {
                   {
                       "progress",
+		       color = { fg = colors.red, bg = colors.none }
                   },
                   {
                       "location",
@@ -100,10 +76,9 @@ return {
                   },
               },
               lualine_z = {
-                  function()
-                      return "  " .. os.date("%X") .. " 🚀 "
-                  end,
+                
               },
+	      
           },
 
           extensions = { "lazy" },

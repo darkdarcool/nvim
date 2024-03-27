@@ -1,3 +1,7 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+
 require("lazy-setup")
 require("lsp")
 require("remapping")
@@ -11,11 +15,11 @@ require("telescope").load_extension "file_browser"
 -- vim.cmd("colorscheme tokyonight-night")
 
 -- set window to be transparent
-vim.cmd("highlight Normal guibg=none")
+--vim.cmd("highlight Normal guibg=none")
 -- set guifg to be transparent
-vim.cmd("highlight NonText guifg=none")
+--vim.cmd("highlight NonText guifg=none")
 -- set lualine to be transparent 
-vim.cmd("highlight lualine_c_normal guibg=none")
+--vim.cmd("highlight lualine_c_normal guibg=none")
 
 -- lualine 
 require("lualine").setup {
@@ -34,7 +38,8 @@ vim.wo.number = true
 vim.cmd("autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab")
 -- if we are in a .rs file, indent size to 4 (and use spaces)
 vim.cmd("autocmd FileType rust setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab")
-
+-- if we are in a .zig file, indent size to 4 (and use spaces)
+vim.cmd("autocmd FileType zig setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab")
 -- nvim notifications rebind to our plugin 
 vim.notify = require("notify")
 
@@ -53,18 +58,40 @@ require('Comment').setup()
 -- run :highlight LineNr guifg=#595e66
 vim.cmd("highlight LineNr guifg=#595e66")
 
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0--2
 
--- use pwsh as the terminal via set shell 
-local powershell_options = {
-  shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
-  shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
-  shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
-  shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
-  shellquote = "",
-  shellxquote = "",
-}
+-- vim.cmd("NvimTreeOpen")
 
-for option, value in pairs(powershell_options) do
-  vim.opt[option] = value
-end
+vim.api.nvim_create_autocmd("QuitPre", {
+  callback = function()
+    local tree_wins = {}
+    local floating_wins = {}
+    local wins = vim.api.nvim_list_wins()
+    for _, w in ipairs(wins) do
+      local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
+      if bufname:match("NvimTree_") ~= nil then
+        table.insert(tree_wins, w)
+      end
+      if vim.api.nvim_win_get_config(w).relative ~= '' then
+        table.insert(floating_wins, w)
+      end
+    end
+    if 1 == #wins - #floating_wins - #tree_wins then
+      -- Should quit, so we close all invalid windows.
+      for _, w in ipairs(tree_wins) do
+        vim.api.nvim_win_close(w, true)
+      end
+    end
+  end
+})
+
+--[[
+vim.api.nvim_create_autocmd("BufEnter", {
+  nested = true,
+  callback = function()
+    if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+      vim.cmd "quit"
+    end
+  end
+})
+--]]

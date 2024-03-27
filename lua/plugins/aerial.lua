@@ -11,6 +11,6 @@ return {
   },
   setup = function ()
     -- call :AerialOpen on startup 
-    vim.cmd [[autocmd VimEnter * AerialOpen]]
+--    vim.cmd [[autocmd VimEnter * AerialOpen]]
   end
 }

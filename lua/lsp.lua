@@ -20,12 +20,7 @@ require("lspconfig").denols.setup {
 -- }
 
 -- lspconfig for zig 
-require("lspconfig").zls.setup {
-  cmd = { "zls" },
-  filetypes = { "zig" },
-  root_dir = require("lspconfig").util.root_pattern(".git"),
-}
-
+require("lspconfig").zls.setup {}
 
 lsp.rust_analyzer.setup({
   cmd = { "rust-analyzer" },
@@ -39,8 +34,9 @@ lsp.swift_mesonls.setup({
   file_types = { "swift" },
 })
 
-lsp.zig.setup{}
+lsp.lua_ls.setup({})
 
+lsp.nil_ls.setup({})
 
 require ('nvim-treesitter.configs').setup {
   indent = {
