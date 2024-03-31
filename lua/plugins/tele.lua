@@ -17,7 +17,7 @@ return {
             },
             n = {
               -- ["<DEL>"] = require("telescope.actions").delete_buffer,
-              ["<c-t>"] = trouble.open_with_trouble,
+              -- ["<c-t>"] = trouble.open_with_trouble,
             },
           },  
         },

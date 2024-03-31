@@ -1,5 +1,6 @@
 return {
   "folke/trouble.nvim",
+  branch = "dev",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
    -- your configuration comes here
@@ -7,7 +8,9 @@ return {
    -- refer to the configuration section below
   },
   setup = function () 
+--[[	
     require("trouble").setup {
+	
       views = {
         mini = {
           win_options = {
@@ -16,5 +19,6 @@ return {
         }
        }
     }
+		--]]
   end
  }

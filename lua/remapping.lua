@@ -14,7 +14,7 @@ vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob=!**/.git/**<CR>", { noremap = true, silent = true })
 -- space f for oil 
 -- vim.keymap.set("n", "<leader>f", function() oil.open() end, { noremap = true, silent = true });
-vim.keymap.set("n", "<leader>f", "<cmd>NvimTree focus<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>f", "<cmd>NvimTreeFocus<CR>")
 
 vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga hover_doc<CR>')
 -- <leader> shift d to lspsaga go_to_definition
@@ -25,6 +25,7 @@ vim.keymap.set('n', '<leader>D', '<cmd>Lspsaga goto_definition<CR>')
 --ctrl f to to telescope.builtin.grep_string
 vim.keymap.set('n', '<C-f>', '<cmd>lua require("telescope.builtin").grep_string({ search = vim.fn.input("Search for: ") })<CR>')
 
+--[[
 require("aerial").setup({
   -- optionally use on_attach to set keymaps when aerial has attached to a buffer
   on_attach = function(bufnr)
@@ -33,6 +34,11 @@ require("aerial").setup({
     vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
   end,
 })
+--]]
+
+vim.keymap.set('n', '[', function() require("trouble").next({ mode = "diagnostics", jump = true }) end)
+vim.keymap.set('n', ']', function () require("trouble").prev({ mode = "diagnostics", jump = true }) end)
+
 -- You probably also want to set a keymap to toggle aerial
 -- vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
 -- vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>Lspsaga finder<CR>', { noremap = true, silent = true })
