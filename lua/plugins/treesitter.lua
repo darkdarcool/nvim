@@ -9,5 +9,8 @@ return {
       highlight = { enable = true },
       indent = { enable = true },  
     })
-  end
+  end,
+  dependencies = {
+		{ "nushell/tree-sitter-nu" },
+	}
 }
