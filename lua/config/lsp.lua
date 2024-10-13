@@ -39,7 +39,15 @@ lsp.lua_ls.setup({
   },
 })
 
-require("lspconfig").nushell.setup({})
+lsp.nushell.setup({})
+
+lsp.ccls.setup({
+  init_options = {
+    cache = {
+      directory = ".ccls-cache";
+    };
+  }
+})
 
 require("lspkind").setup({
   mode = "symbol_text",
@@ -69,6 +77,7 @@ require("lspkind").setup({
     Struct = "󰙅",
     Event = "",
     Operator = "󰆕",
-    TypeParameter = "",
+    --TypeParameter = "",
+    TypeParameter = "",
   },
 })

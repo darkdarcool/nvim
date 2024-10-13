@@ -6,6 +6,10 @@ return {
   },
   config = function()
     require("nvim-tree").setup({
+      filters = {
+        enable = true,
+        custom = { "node_modules", "target", "result", ".git", "zig-cache", "zig-out", ".ccls-cache" }
+      },
       git = {
         enable = false,
       },
@@ -18,7 +22,6 @@ return {
       hijack_cursor = true,
       hijack_netrw = true,
       disable_netrw = true,
-      filters = {},
       actions = {
         open_file = {
           quit_on_open = true,
