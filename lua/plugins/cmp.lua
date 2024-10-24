@@ -10,6 +10,7 @@ local M = {
     "onsails/lspkind.nvim",
   },
   event = "LspAttach",
+  enabled = false,
 }
 
 M.config = function()
@@ -34,7 +35,7 @@ M.config = function()
         side_padding = 0,
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         winhighlight = "Normal:Normal,FloatBorder:BorderBG,Search:None",
-        #"Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
+        --"Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None",
       },
     },
     formatting = {

@@ -45,10 +45,29 @@ lsp.ccls.setup({
   init_options = {
     cache = {
       directory = ".ccls-cache";
-    };
+    }
   }
 })
 
+lsp.zls.setup({})
+
+lsp.rust_analyzer.setup({
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = true
+      },
+      inlayHints = {
+        typeHints = { enable = true },
+        chainingHints = { enable = true },
+        parameterHints = { enable = true },
+        closingBraceHints = { enable = true }
+      }
+    }
+  }
+})
+
+--[[
 require("lspkind").setup({
   mode = "symbol_text",
   preset = "codicons",
@@ -81,3 +100,4 @@ require("lspkind").setup({
     TypeParameter = "",
   },
 })
+--]]

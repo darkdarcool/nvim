@@ -178,11 +178,11 @@ M.config = function()
   table.insert(components.active[3], {
     provider = "git_diff_removed",
     hl = { fg = "#ec5295", bg = "none" },
-    right_sep = {
-      always_visible = false,
-      str = " |",
-      hl = { fg = "none", bg = "none" },
-    },
+    --right_sep = {
+    --  always_visible = false,
+    --  str = " |",
+    --  hl = { fg = "none", bg = "none" },
+    --},
   })
 
   -- cursor position relative to the current buf
@@ -190,7 +190,7 @@ M.config = function()
     provider = "line_percentage",
     left_sep = {
       always_visible = true,
-      str = " ",
+      str = " | ",
       hl = { bg = "none", fg = "none" },
     },
     right_sep = {
