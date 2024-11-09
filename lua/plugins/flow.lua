@@ -7,10 +7,10 @@ return {
       transparent = true,
       mode = "desaturate",
       fluo_color = "pink",
-      dark_theme = true
+      dark_theme = true,
     })
 
     vim.cmd("colorscheme flow")
   end,
-  enabled = false
+  enabled = false,
 }

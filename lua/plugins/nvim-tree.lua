@@ -8,7 +8,7 @@ return {
     require("nvim-tree").setup({
       filters = {
         enable = true,
-        custom = { "node_modules", "target", "result", ".git", "zig-cache", "zig-out", ".ccls-cache" }
+        custom = { "node_modules", "target", "result", ".git", "zig-cache", "zig-out", ".ccls-cache" },
       },
       git = {
         enable = false,

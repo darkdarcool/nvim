@@ -17,6 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
+    { 'm-demare/hlargs.nvim' },
+    { "nvchad/volt", lazy = true },
     { "dstein64/vim-startuptime" },
     { import = "plugins" },
     {

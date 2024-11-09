@@ -6,7 +6,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.signcolumn = "no"
 vim.opt.number = true
 vim.o.termguicolors = true
-vim.opt.fillchars = {eob = " "}
+vim.opt.fillchars = { eob = " " }
 
 vim.g.nvim_tree_gitignore = 0
 vim.g.nvim_tree_git_hl = 0

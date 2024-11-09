@@ -1,15 +1,15 @@
-return  {
-  'mikesmithgh/borderline.nvim',
+return {
+  "mikesmithgh/borderline.nvim",
   lazy = true,
-  event = 'VeryLazy',
+  event = "VeryLazy",
   config = function()
-    require('borderline').setup({
+    require("borderline").setup({
       enabled = true,
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
       border_styles = {
-        "none"
-      }
+        "none",
+      },
     })
   end,
-  enabled = false
- }
+  enabled = false,
+}

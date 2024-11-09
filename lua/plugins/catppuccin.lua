@@ -11,9 +11,10 @@ return {
         dark = "mocha",
       },
       transparent_background = true,
+      cache = true,
     })
 
     vim.cmd.colorscheme("catppuccin")
   end,
-  enabled = true
+  enabled = true,
 }

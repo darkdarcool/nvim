@@ -44,28 +44,31 @@ lsp.nushell.setup({})
 lsp.ccls.setup({
   init_options = {
     cache = {
-      directory = ".ccls-cache";
-    }
-  }
+      directory = ".ccls-cache",
+    },
+  },
 })
 
 lsp.zls.setup({})
 
 lsp.rust_analyzer.setup({
   settings = {
-    ['rust-analyzer'] = {
+    ["rust-analyzer"] = {
       diagnostics = {
-        enable = true
+        enable = true,
       },
       inlayHints = {
         typeHints = { enable = true },
         chainingHints = { enable = true },
         parameterHints = { enable = true },
-        closingBraceHints = { enable = true }
-      }
-    }
-  }
+        closingBraceHints = { enable = true },
+      },
+    },
+  },
 })
+
+require('hlargs').setup()
+require('hlargs').enable()
 
 --[[
 require("lspkind").setup({

@@ -8,10 +8,10 @@ return {
       overrides = function(colors)
         print("I'm overriding!")
         return {
-          BlinkCmpSignatureHelpActiveParameter = { fg = colors.cyan, bg = colors.gray }
+          BlinkCmpSignatureHelpActiveParameter = { fg = colors.cyan, bg = colors.gray },
         }
-      end
-    }
+      end,
+    },
   },
   config = function(_, opts)
     require("cyberdream").setup(opts)
